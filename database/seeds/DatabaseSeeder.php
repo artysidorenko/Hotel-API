@@ -11,6 +11,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+        // Model::unguard();
+
+        $this->call(RoomsTableSeeder::class);
+        $this->call(GuestsTableSeeder::class);
+
+        // Model::reguard();
     }
 }
