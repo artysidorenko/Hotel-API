@@ -14,6 +14,16 @@ class Booking extends Model
     protected $fillable = [
         'room_id', 'arrival', 'departure', 'guest_id'
     ];
+
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = [
+        'arrival',
+        'departure'
+    ];
     
     /**
      * No need for created_at/updated_at

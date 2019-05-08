@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Booking;
 use App\Guest;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -60,6 +62,8 @@ class BookingController extends Controller
         }
 
         $input = $request->all();
+        $input['arrival'] = Carbon::parse($input['arrival']);
+        $input['departure'] = Carbon::parse($input['departure']);
         $booking = Booking::create($input);
 
         $guest = Guest::findOrFail($input['guest_id']);
@@ -107,6 +111,9 @@ class BookingController extends Controller
         }
 
         $input = $request->all();
+        $input['arrival'] = Carbon::parse($input['arrival']);
+        $input['departure'] = Carbon::parse($input['departure']);
+
         $booking = Booking::findOrFail($id);
         $guestPre = $booking->guest_id;
         $roomPre = $booking->room_id;
