@@ -12,5 +12,14 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome', [
+        'results' => 'loading results...'
+    ]);
 });
+
+Route::get('/rooms', function () {
+    return view('welcome', [
+        'rooms' => [],
+    ]);
+});
+

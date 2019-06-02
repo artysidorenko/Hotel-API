@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Symfony\Component\HttpFoundation\Request;
 
+use Illuminate\Support\Facades\Log;
+
 class GuestController extends Controller
 {
     /**
@@ -15,7 +17,7 @@ class GuestController extends Controller
      * @return json
      */
     function list() {
-
+        Log::debug('LIST controller hit');
         return Guest::all();
     }
 
@@ -35,6 +37,7 @@ class GuestController extends Controller
      * @return json
      */
     function new (Request $request) {
+        Log::debug('NEW controller hit');
         $validator = Validator::make($request->all(), [
             'surname' => 'required|alpha',
             'name' => 'required|alpha',

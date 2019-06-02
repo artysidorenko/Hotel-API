@@ -4,18 +4,44 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Room;
+use App\Booking;
 use Illuminate\Support\Facades\Validator;
 use Symfony\Component\HttpFoundation\Request;
-use Hamcrest\Type\IsInteger;
+use Illuminate\Support\Facades\Log;
 
 class RoomController extends Controller
 {
+    /**
+     * Refresh room database by checking if it's free on today's date
+     *
+     * @return void
+     */
+    public function refreshOccupancy()
+    {
+        $now = new \DateTime();
+
+        $rooms = Room::all();
+        $bookings = Booking::all();
+        foreach ($rooms as $room) {
+            $room->available = true;
+            foreach ($bookings as $booking) {
+                if ($room->id === $booking->room_id && $now > $booking->arrival && $now < $booking->departure) {
+                    $room->available = false;
+                }
+            }
+            $room->push();
+        }
+    }
+
     /**
      * List all current room information, filtered by 'free'/'available' if specified.
      *
      * @return json
      */
     function list(Request $request) {
+
+        // First refresh room database by checking if it's free on today's date
+        $this->refreshOccupancy();
 
         if ($request->query('free')) {
             return Room::where('available', $request->query('free') == 'true')->get();
@@ -68,9 +94,9 @@ class RoomController extends Controller
     public function update(Request $request, $id)
     {
 
-        if(!is_numeric($id)) {
+        if (!is_numeric($id)) {
             return response()->json([
-            'error' =>'Not Found.',
+                'error' => 'Not Found.',
             ], 404);
         }
 
