@@ -6,18 +6,44 @@ use App\Guest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Symfony\Component\HttpFoundation\Request;
+use App\Booking;
 
 use Illuminate\Support\Facades\Log;
 
 class GuestController extends Controller
 {
     /**
+     * Refresh guest database by checking if they're staying in a room on today's date
+     *
+     * @return void
+     */
+    public function refreshRoomId()
+    {
+        $now = new \DateTime();
+
+        $guests = Guest::all();
+        $bookings = Booking::all();
+        foreach ($guests as $guest) {
+            $guest->room_id = null;
+            foreach ($bookings as $booking) {
+                if ($guest->id === $booking->guest_id && $now > $booking->arrival && $now < $booking->departure) {
+                    $guest->room_id = $booking->room_id;
+                }
+            }
+            $guest->push();
+        }
+    }
+
+    /**
      * List all current guest information.
      *
      * @return json
      */
     function list() {
-        Log::debug('LIST controller hit');
+        
+        // First refresh guest database with current rooms
+        $this->refreshRoomId();
+
         return Guest::all();
     }
 

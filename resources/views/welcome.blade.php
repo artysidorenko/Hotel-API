@@ -121,7 +121,7 @@
 
                 <div class="instructions m-b-md">
                     <p>This app works as a hotel booking system, through which you can register new guests and book rooms.</p>
-                    <p>Rooms will automatically display whether they are currently occupied (on today's date).</p>
+                    <p>Rooms will update whether they are currently occupied (on today's date); similarly the guest manifest will display which room guests may currently be staying in.</p>
                     <ul class="api_list">
                         <p class="m-b-md"><strong class="center">The back-end API can be accessed directly via these endpoints:</strong></p>
                         <li><i>/api/rooms|guests|bookings GET</i> to list all rooms|guests|bookings</li>

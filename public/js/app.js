@@ -1896,6 +1896,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "bookings",
@@ -1931,6 +1933,8 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
 //
 //
 //
@@ -2234,21 +2238,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "NewGuest",
   data: function data() {
     return {
       guest: {
-        name: '',
-        surname: '',
+        name: "",
+        surname: "",
         age: null
       }
     };
   },
   methods: {
     createGuest: function createGuest(guest) {
-      this.$store.dispatch('newGuest', guest);
+      this.$store.dispatch("newGuest", guest);
     }
   },
   computed: {
@@ -6717,7 +6726,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.table[data-v-849938d6] {\n  display: inline-block;\n  margin: auto;\n  table-layout: fixed;\n}\n.table__body[data-v-849938d6] {\n  display: block;\n  max-height: 500px;\n  overflow-y: scroll;\n}\ntd[data-v-849938d6],\nth[data-v-849938d6] {\n  width: 20%;\n  padding: 5px;\n  border-bottom: 1px solid grey;\n}\n", ""]);
+exports.push([module.i, "\n.table[data-v-849938d6] {\n  display: block;\n  margin: auto;\n  table-layout: fixed;\n}\nthead[data-v-849938d6] {\n  display: table-header-group;\n}\n.table__body[data-v-849938d6] {\n  max-height: 500px;\n  overflow-y: scroll;\n}\ntd[data-v-849938d6],\nth[data-v-849938d6] {\n  width: 20%;\n  padding: 5px;\n  border-bottom: 1px solid grey;\n}\n", ""]);
 
 // exports
 
@@ -6736,7 +6745,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.table[data-v-96feab94] {\n  display: inline-block;\n  margin: auto;\n  table-layout: fixed;\n}\n.table__body[data-v-96feab94] {\n  display: block;\n  max-height: 500px;\n  overflow-y: scroll;\n}\ntd[data-v-96feab94],\nth[data-v-96feab94] {\n  width: 20%;\n  padding: 5px;\n  border-bottom: 1px solid grey;\n}\n", ""]);
+exports.push([module.i, "\n.table[data-v-96feab94] {\n  display: block;\n  margin: auto;\n  table-layout: fixed;\n}\nthead[data-v-96feab94] {\n  display: table-header-group;\n}\n.table__body[data-v-96feab94] {\n  max-height: 500px;\n  overflow-y: scroll;\n}\ntd[data-v-96feab94],\nth[data-v-96feab94] {\n  width: 20%;\n  padding: 5px;\n  border-bottom: 1px solid grey;\n}\n", ""]);
 
 // exports
 
@@ -6793,7 +6802,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.form-group *[data-v-11383cfa] {\n  font-family: inherit;\n  text-align: center;\n  margin: 5px;\n}\nbutton[data-v-11383cfa] {\n  cursor: pointer;\n}\n", ""]);
+exports.push([module.i, "\n.form-group *[data-v-11383cfa] {\n  font-family: inherit;\n  text-align: center;\n  margin: 5px;\n}\nbutton[data-v-11383cfa] {\n  cursor: pointer;\n}\n.message[data-v-11383cfa] {\n  padding: 10px;\n  font-weight: bold;\n}\n", ""]);
 
 // exports
 
@@ -38530,7 +38539,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Age")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Room Number")])
+        _c("th", [_vm._v("Current Room #")])
       ])
     ])
   }
@@ -38955,7 +38964,13 @@ var render = function() {
               )
             ])
           ]
-        )
+        ),
+        _vm._v(" "),
+        _vm.submitted
+          ? _c("div", { staticClass: "message" }, [
+              _vm._v("Your Request Has Been Sent")
+            ])
+          : _vm._e()
       ])
     ])
   ])

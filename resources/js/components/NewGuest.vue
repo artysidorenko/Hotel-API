@@ -21,20 +21,25 @@
             >Submit</button>
           </div>
         </form>
+        <div class="message" v-if="submitted">Your Request Has Been Sent</div>
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-  .form-group * {
-    font-family: inherit;
-    text-align: center;
-    margin: 5px;
-  }
-  button {
-    cursor: pointer;
-  }
+.form-group * {
+  font-family: inherit;
+  text-align: center;
+  margin: 5px;
+}
+button {
+  cursor: pointer;
+}
+.message {
+  padding: 10px;
+  font-weight: bold;
+}
 </style>
 
 <script>
@@ -43,22 +48,22 @@ import { mapGetters } from "vuex";
 export default {
   name: "NewGuest",
   data() {
-      return {
-          guest: {
-              name: '',
-              surname: '',
-              age: null
-          }
+    return {
+      guest: {
+        name: "",
+        surname: "",
+        age: null
       }
+    };
   },
   methods: {
     createGuest(guest) {
-        this.$store.dispatch('newGuest', guest)
+      this.$store.dispatch("newGuest", guest);
     }
   },
   computed: {
     isValid() {
-        return true
+      return true;
     }
   }
 };

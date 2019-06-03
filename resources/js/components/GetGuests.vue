@@ -7,23 +7,23 @@
           <div class="results">
             <table class="table" cellspacing="0">
               <thead>
-                  <tr>
-                    <th>Guest ID</th>
-                    <th>Name</th>
-                    <th>Surname</th>
-                    <th>Age</th>
-                    <th>Room Number</th>
+                <tr>
+                  <th>Guest ID</th>
+                  <th>Name</th>
+                  <th>Surname</th>
+                  <th>Age</th>
+                  <th>Current Room #</th>
                 </tr>
-            </thead>
-            <tbody class="table__body">
-              <tr v-for="guest in guests" v-bind:key="guest.id">
-                <td>{{guest.id}}</td>
-                <td>{{guest.name}}</td>
-                <td>{{guest.surname}}</td>
-                <td>{{guest.age}}</td>
-                <td>{{guest.room_id ? guest.room_id : ''}}</td>
-              </tr>
-            </tbody>
+              </thead>
+              <tbody class="table__body">
+                <tr v-for="guest in guests" v-bind:key="guest.id">
+                  <td>{{guest.id}}</td>
+                  <td>{{guest.name}}</td>
+                  <td>{{guest.surname}}</td>
+                  <td>{{guest.age}}</td>
+                  <td>{{guest.room_id ? guest.room_id : ''}}</td>
+                </tr>
+              </tbody>
             </table>
           </div>
         </div>
@@ -33,13 +33,15 @@
 </template>
 
 <style scoped>
-    .table {
-  display: inline-block;
+.table {
+  display: block;
   margin: auto;
   table-layout: fixed;
 }
+thead {
+  display: table-header-group;
+}
 .table__body {
-  display: block;
   max-height: 500px;
   overflow-y: scroll;
 }

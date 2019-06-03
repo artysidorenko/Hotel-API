@@ -34,12 +34,14 @@
 
 <style scoped>
 .table {
-  display: inline-block;
+  display: block;
   margin: auto;
   table-layout: fixed;
 }
+thead {
+  display: table-header-group;
+}
 .table__body {
-  display: block;
   max-height: 500px;
   overflow-y: scroll;
 }
